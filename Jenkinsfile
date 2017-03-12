@@ -25,7 +25,7 @@ stage ('gradle build') {
 
 	  }
 	  else{
-		bat './gradlew.bat clean build'
+		bat './gradlew.bat clean build package'
 	  }
 }
 
