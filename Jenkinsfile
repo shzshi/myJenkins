@@ -14,25 +14,28 @@ import java.net.URL
  
 try {
 node {
-stage '\u2776 Stage 1'
-echo "\u2600 BUILD_URL=${env.BUILD_URL}"
+
+stage 'Clone Source Files'
+git url: https://github.com/kyoayala/helloworld.git
  
-def workspace = pwd()
-echo "\u2600 workspace=${workspace}"
- 
-stage '\u2777 Stage 2'
+stage 'gradle build'
+def buildInfo = rtGradle.run rootDir: "helloworld/", buildFile: 'build.gradle', tasks: 'clean build'
+
+stage 'Publish build info'
+server.publishBuildInfo buildInfo
+
 } // node
 } // try end
 catch (exc) {
 /*
  err = caughtError
  currentBuild.result = "FAILURE"
- String recipient = 'infra@lists.jenkins-ci.org'
+ String recipient = 'shzshi@gmail.com'
  mail subject: "${env.JOB_NAME} (${env.BUILD_NUMBER}) failed",
          body: "It appears that ${env.BUILD_URL} is failing, somebody should do something about that",
            to: recipient,
       replyTo: recipient,
- from: 'noreply@ci.jenkins.io'
+ from: 'noreply@mysite'
 */
 } finally {
   
