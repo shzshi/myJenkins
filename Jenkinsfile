@@ -17,7 +17,7 @@ node {
 
 def gradleHome
 
-stage 'Clone Source Files'{
+stage 'Preparation'{
 git : https://github.com/kyoayala/helloworld.git
 
 // Get the Gradle tool.
