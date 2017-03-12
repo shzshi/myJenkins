@@ -26,14 +26,14 @@ git : https://github.com/kyoayala/helloworld.git
 gradleHome = tool 'gradle'
 
 }
-stage 'gradle build'
-node{
+stage ('gradle build') {
+	
   if(isUnix()){
   sh "'${gradleHome}/bin/gradle' build --info"
 
   }
   else{
-    bat 'gradle build --info'
+	bat ''${gradleHome}/bin/gradle' build --info'
   }
 }
 
