@@ -16,7 +16,7 @@ try {
 node {
 
 stage 'Clone Source Files'
-git url: https://github.com/kyoayala/helloworld.git
+git : https://github.com/kyoayala/helloworld.git
  
 stage 'gradle build'
 def buildInfo = rtGradle.run rootDir: "helloworld/", buildFile: 'build.gradle', tasks: 'clean build'
