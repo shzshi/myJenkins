@@ -21,11 +21,11 @@ checkout scm
 stage ('gradle build') {
 
 	  if(isUnix()){
-	  sh './gradlew clean build'
+	  sh './gradlew clean build assemble'
 
 	  }
 	  else{
-		bat './gradlew.bat clean build package'
+		bat './gradlew.bat clean build'
 	  }
 }
 
