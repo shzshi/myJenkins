@@ -33,7 +33,7 @@ stage ('gradle build') {
 
 	  }
 	  else{
-		bat ''${gradleHome}/bin/gradle' build --info'
+		bat "'${gradleHome}/bin/gradle' build --info"
 	  }
 	}
 }
