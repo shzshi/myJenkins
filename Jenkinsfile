@@ -29,11 +29,11 @@ gradleHome = tool 'gradle'
 stage ('gradle build') {
 	node{
 	  if(isUnix()){
-	  sh "'${gradleHome}/bin/gradle' clean"
+	  sh "'${gradleHome}/bin/gradlew' clean"
 
 	  }
 	  else{
-		bat "'${gradleHome}/bin/gradle' build --info"
+		bat "'${gradleHome}/bin/gradlew' build --info"
 	  }
 	}
 }
