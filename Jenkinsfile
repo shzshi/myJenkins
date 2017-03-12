@@ -26,7 +26,7 @@ server.publishBuildInfo buildInfo
 
 } // node
 } // try end
-catch (exc) {
+catch (caughtError) {
 /*
  err = caughtError
  currentBuild.result = "FAILURE"
