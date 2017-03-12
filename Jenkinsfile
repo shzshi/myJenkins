@@ -15,10 +15,9 @@ import java.net.URL
 try {
 node {
 
-stage ('Clone Source Files') {
-git : https://github.com/kyoayala/helloworld.git
+stage ('Clone Source Files')
+checkout scm
 
-}
 stage ('gradle build') {
 
 	  if(isUnix()){
