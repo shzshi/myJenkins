@@ -26,9 +26,8 @@ server.publishBuildInfo buildInfo
 
 } // node
 } // try end
-catch (caughtError) {
-/*
- err = caughtError
+catch (any) {
+
  currentBuild.result = "FAILURE"
  String recipient = 'shzshi@gmail.com'
  mail subject: "${env.JOB_NAME} (${env.BUILD_NUMBER}) failed",
@@ -36,7 +35,7 @@ catch (caughtError) {
            to: recipient,
       replyTo: recipient,
  from: 'noreply@mysite'
-*/
+ 
 } finally {
   
  (currentBuild.result != "ABORTED") && node("master") {
@@ -46,10 +45,5 @@ catch (caughtError) {
         notifyEveryUnstableBuild: true,
         recipients: "${email_to}",
         sendToIndividuals: true])
- }
- 
- // Must re-throw exception to propagate error:
- if (err) {
-     throw err
  }
 }
