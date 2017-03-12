@@ -19,10 +19,15 @@ stage 'Clone Source Files'
 git : https://github.com/kyoayala/helloworld.git
  
 stage 'gradle build'
-def buildInfo = rtGradle.run rootDir: "helloworld/", buildFile: 'build.gradle', tasks: 'clean build'
+node{
+  if(isUnix()){
+  sh 'gradle build --info'
 
-stage 'Publish build info'
-server.publishBuildInfo buildInfo
+  }
+  else{
+    bat 'gradle build --info'
+  }
+}
 
 } // node
 } // try end
