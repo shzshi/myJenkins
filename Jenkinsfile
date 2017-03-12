@@ -29,7 +29,7 @@ gradleHome = tool 'gradle'
 stage 'gradle build'
 node{
   if(isUnix()){
-  sh "'${gradleHome}/gradle/bin/gradle' build --info"
+  sh "'${gradleHome}/bin/gradle' build --info"
 
   }
   else{
@@ -52,12 +52,12 @@ catch (any) {
  
 } finally {
   
- (currentBuild.result != "ABORTED") && node("master") {
+ /*(currentBuild.result != "ABORTED") && node("master") {
      // Send e-mail notifications for failed or unstable builds.
      // currentBuild.result must be non-null for this step to work.
      step([$class: 'Mailer',
         notifyEveryUnstableBuild: true,
         recipients: "${email_to}",
         sendToIndividuals: true])
- }
+ }*/
 }
