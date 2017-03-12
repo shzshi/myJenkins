@@ -30,11 +30,12 @@ catch (any) {
 
  currentBuild.result = "FAILURE"
  String recipient = 'shzshi@gmail.com'
- mail subject: "${env.JOB_NAME} (${env.BUILD_NUMBER}) failed",
+ /*mail subject: "${env.JOB_NAME} (${env.BUILD_NUMBER}) failed",
          body: "It appears that ${env.BUILD_URL} is failing, somebody should do something about that",
            to: recipient,
       replyTo: recipient,
- from: 'noreply@mysite'
+ from: 'noreply@mysite' */
+ throw any
  
 } finally {
   
