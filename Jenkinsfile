@@ -27,14 +27,15 @@ gradleHome = tool 'gradle'
 
 }
 stage ('gradle build') {
-	
-  if(isUnix()){
-  sh "'${gradleHome}/bin/gradle' build --info"
+	node{
+	  if(isUnix()){
+	  sh "'${gradleHome}/bin/gradle' clean"
 
-  }
-  else{
-	bat ''${gradleHome}/bin/gradle' build --info'
-  }
+	  }
+	  else{
+		bat ''${gradleHome}/bin/gradle' build --info'
+	  }
+	}
 }
 
 } // node
