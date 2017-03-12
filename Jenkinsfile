@@ -15,27 +15,19 @@ import java.net.URL
 try {
 node {
 
-def gradleHome
-
 stage ('Clone Source Files') {
 git : https://github.com/kyoayala/helloworld.git
 
-// Get the Gradle tool.
-// ** NOTE: This 'gradle' gradle tool must be configured
-// **       in the global configuration. 
-gradleHome = tool 'gradle'
-
 }
 stage ('gradle build') {
-	node{
+
 	  if(isUnix()){
-	  sh "'${gradleHome}/bin/gradlew' clean"
+	  sh './gradlew clean build'
 
 	  }
 	  else{
-		bat "'${gradleHome}/bin/gradlew' build --info"
+		bat './gradlew.bat clean build'
 	  }
-	}
 }
 
 } // node
