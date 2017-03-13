@@ -32,7 +32,7 @@ node {
 	stage ('Finger Printing Artifact') {
 	
 		sh "openssl md5 ${WORKSPACE}/build/libs/gs-gradle-${buildNumber}.jar"
-		sh 'sed -i "s/md5.*/md5: \"$(openssl md5 ${WORKSPACE}/build/libs/gs-gradle-${buildNumber}.jar | awk \'{print $2}\')\"/" ${WORKSPACE}/config/software/morpeus-ui.rb'
+		sh 'sed -i "s/md5.*/md5: \"$(openssl md5 ${WORKSPACE}/build/libs/gs-gradle-0.1.0.jar | awk \'{print $2}\')\"/" ${WORKSPACE}/config/software/morpeus-ui.rb'
 	}
 	
 
