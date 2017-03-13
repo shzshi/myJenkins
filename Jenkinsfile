@@ -14,6 +14,7 @@ import java.net.URL
  
 try {
 node {
+     def buildNumber = 0.1.0
 
 	stage ('Clone Source Files')
 	checkout scm
@@ -27,6 +28,13 @@ node {
 			bat './gradlew.bat clean build assemble'
 		  }
 	}
+	
+	stage ('Finger Printing Artifact') {
+		
+		sh "openssl md5 ${WORKSPACE}/build/lib/gs-gradle-${buildNumber}.jar"
+		
+	}
+	
 
 } // node
 } // try end
