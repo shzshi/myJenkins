@@ -1,9 +1,9 @@
 #!/usr/bin/env groovy
  
 /**
-        * Sample Jenkinsfile for Jenkins2 Pipeline
-        * by shzshi 
- */
+        * Jenkinsfile for Jenkins2 Pipeline
+        * 
+*/
  
 import hudson.model.*
 import hudson.EnvVars
@@ -15,26 +15,25 @@ import java.net.URL
 try {
 node {
 
-stage ('Clone Source Files')
-checkout scm
+	stage ('Clone Source Files')
+	checkout scm
 
-stage ('gradle build') {
+	stage ('Gradle Build & Assemble') {
 
-	  if(isUnix()){
-	  sh './gradlew clean build assemble'
-
-	  }
-	  else{
-		bat './gradlew.bat clean build'
-	  }
-}
+		  if(isUnix()){
+		  sh './gradlew clean build assemble'
+		  }
+		  else{
+			bat './gradlew.bat clean build assemble'
+		  }
+	}
 
 } // node
 } // try end
 catch (any) {
 
  currentBuild.result = "FAILURE"
- String recipient = 'shzshi@gmail.com'
+ String recipient = 'your@emailaddress.com'
  /*mail subject: "${env.JOB_NAME} (${env.BUILD_NUMBER}) failed",
          body: "It appears that ${env.BUILD_URL} is failing, somebody should do something about that",
            to: recipient,
@@ -49,7 +48,7 @@ catch (any) {
      // currentBuild.result must be non-null for this step to work.
      step([$class: 'Mailer',
         notifyEveryUnstableBuild: true,
-        recipients: "${email_to}",
+        recipients: "your@emailaddress.com",
         sendToIndividuals: true])
  }*/
 }
