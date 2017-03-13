@@ -14,7 +14,7 @@ import java.net.URL
  
 try {
 node {
-     def buildNumber = 0.1.0
+     def buildNumber = '0.1.0'
 
 	stage ('Clone Source Files')
 	checkout scm
