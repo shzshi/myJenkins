@@ -33,6 +33,8 @@ node {
 	
 		sh "openssl md5 ${WORKSPACE}/build/libs/gs-gradle-${buildNumber}.jar"
 		
+		sh "sed "s/md5=.*/md5 echo -n "${WORKSPACE}/build/libs/gs-gradle-${buildNumber}.jar" | md5sum | cut -f1 -d' '/g" ${WORKSPACE}/config/software/morpeus-ui.rb
+		
 	}
 	
 
