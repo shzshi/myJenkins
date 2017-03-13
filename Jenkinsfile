@@ -30,7 +30,7 @@ node {
 	}
 	
 	stage ('Finger Printing Artifact') {
-		
+	
 		sh "openssl md5 ${WORKSPACE}/build/libs/gs-gradle-${buildNumber}.jar"
 		
 	}
